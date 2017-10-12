@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import store from './stores'
 import { Provider } from 'react-redux'
-import { Home } from './components/containers'
+import { Home, CurrentUsers } from './components/containers'
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * *
 	This is the entry point of the React app wit Redux
@@ -15,7 +15,10 @@ import { Home } from './components/containers'
 
 const app = (
 	<Provider store={store.configure(null)}>
-	  <Home />
+      <div>	  
+	    <Home />
+	    <CurrentUsers />
+	  </div>  
 	</Provider>
 )
 

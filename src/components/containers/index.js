@@ -7,10 +7,11 @@
 
 // import Users from './Users'
 import Home from './Home'
+import CurrentUsers from './CurrentUsers'
 
 export {
 
-	// Users
+	CurrentUsers,
 	Home
 	
 }

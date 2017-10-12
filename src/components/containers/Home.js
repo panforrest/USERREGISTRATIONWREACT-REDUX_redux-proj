@@ -52,15 +52,7 @@ class Home extends Component {
   render(){
   	console.log('RENDER!')
 
-   //  const list = (this.props.users == null) ? null : (
-
-  	// this.props.users.map((user, i) => {
-  	// 	return(
-   //        <li key={i}> { user.username } </li>
-  	// 	)
-  	// }))
-
-    const users = this.props.user.all || []
+    
 
   	return (
       <div className="container">
@@ -68,13 +60,7 @@ class Home extends Component {
         <input onChange={this.updateVisitor.bind(this, 'username')} type="text" placeholder="username" /><br />
         <input onChange={this.updateVisitor.bind(this, 'password')} type="password" placeholder="password" /><br />
         <button onClick={this.registerVisitor.bind(this)}>Join</button>
-        <h3>Current Users</h3>
-          <ol>
-	        { users.map((user, i) => {
-	          return <li key={user.id}>{user.username}</li>
-	          })
-	        }
-	      </ol>  
+ 
       </div>
   	)
   }
