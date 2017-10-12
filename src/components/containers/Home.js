@@ -52,20 +52,29 @@ class Home extends Component {
   render(){
   	console.log('RENDER!')
 
-    const list = (this.props.users == null) ? null : (
+   //  const list = (this.props.users == null) ? null : (
 
-  	this.props.users.map((user, i) => {
-  		return(
-          <li key={i}> { user.username } </li>
-  		)
-  	}))
+  	// this.props.users.map((user, i) => {
+  	// 	return(
+   //        <li key={i}> { user.username } </li>
+  	// 	)
+  	// }))
+
+    const users = this.props.user.all || []
+
   	return (
       <div className="container">
         <h2>Sign Up</h2>
         <input onChange={this.updateVisitor.bind(this, 'username')} type="text" placeholder="username" /><br />
         <input onChange={this.updateVisitor.bind(this, 'password')} type="password" placeholder="password" /><br />
         <button onClick={this.registerVisitor.bind(this)}>Join</button>
-        {list}
+        <h3>Current Users</h3>
+          <ol>
+	        { users.map((user, i) => {
+	          return <li key={user.id}>{user.username}</li>
+	          })
+	        }
+	      </ol>  
       </div>
   	)
   }
@@ -73,7 +82,7 @@ class Home extends Component {
 
 const stateToProps = (state) => {
   return{
-    users: state.user.all
+    user: state.user
   }
 }
 
