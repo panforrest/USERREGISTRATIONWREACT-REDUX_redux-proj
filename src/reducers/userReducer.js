@@ -29,9 +29,9 @@ export default (state = initialState, action) => {
 
 		case constants.USER_CREATED:
 		    console.log('USER_CREATED: ' + JSON.stringify(action.data))
-			// let array = (newState.all) ? Object.assign([], newState.all) : []
-			// array.unshift(action.data)
-			// newState['all'] = array
+			let array = (newState.all) ? Object.assign([], newState.all) : []
+			array.unshift(action.data)
+			newState['all'] = array
 			return newState
 
 		default:

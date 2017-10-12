@@ -53,7 +53,7 @@ class Home extends Component {
 
 const stateToProps = (state) => {
   return{
-    // user: state.user
+    user: state.user
   }
 }
 
