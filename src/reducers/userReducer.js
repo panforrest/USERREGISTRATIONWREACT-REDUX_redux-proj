@@ -24,6 +24,7 @@ export default (state = initialState, action) => {
 			return newState
 
 		case constants.USERS_RECEIVED:
+		    console.log('USERS_RECEIVED: ' + JSON.stringify(action.data))
 			newState['all'] = action.data
 			return newState
 

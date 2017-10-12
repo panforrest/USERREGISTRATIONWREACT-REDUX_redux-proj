@@ -11,6 +11,17 @@ class Home extends Component {
   	}
   }
 
+  componentDidMount(){
+  	// console.log('componentDidMount: ')
+  	this.props.fetchUsers()
+  	.then(data => {
+  	  console.log('FETCH USERS: ' + JSON.stringify(data))
+  	})
+  	.catch(err => {
+  	  alert('ERROR: ' + err.message)
+  	})
+  }
+
   updateVisitor(attr, event){
   	console.log(attr + ' == ' + event.target.value)
 
@@ -40,12 +51,21 @@ class Home extends Component {
 
   render(){
   	console.log('RENDER!')
+
+    const list = (this.props.users == null) ? null : (
+
+  	this.props.users.map((user, i) => {
+  		return(
+          <li key={i}> { user.username } </li>
+  		)
+  	}))
   	return (
       <div className="container">
         <h2>Sign Up</h2>
         <input onChange={this.updateVisitor.bind(this, 'username')} type="text" placeholder="username" /><br />
         <input onChange={this.updateVisitor.bind(this, 'password')} type="password" placeholder="password" /><br />
         <button onClick={this.registerVisitor.bind(this)}>Join</button>
+        {list}
       </div>
   	)
   }
@@ -53,13 +73,14 @@ class Home extends Component {
 
 const stateToProps = (state) => {
   return{
-    user: state.user
+    users: state.user.all
   }
 }
 
 const dispatchToProps = (dispatch) => {
   return{
-  	addUser: (user) => dispatch(actions.addUser(user))
+  	addUser: (user) => dispatch(actions.addUser(user)),
+  	fetchUsers: (params) => dispatch(actions.fetchUsers(params))
   }
 }
 
